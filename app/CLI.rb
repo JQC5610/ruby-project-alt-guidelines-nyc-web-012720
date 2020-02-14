@@ -69,8 +69,7 @@ class CommandLineInterface
             case choice
             when 1 
                 user.create_playlist
-                # p "What songs would you like to add?"
-                # show_all_songs
+                
                 user.add_song_to_playlist
             when 2
                 user.reload.view_playlists #updates DB in real time
@@ -79,7 +78,7 @@ class CommandLineInterface
             when 4
                 user.delete_song_from_playlist
             when 5
-              
+                user.delete_a_playlist
             when 6
                 p "Goodbye"
                 @signed_in = false

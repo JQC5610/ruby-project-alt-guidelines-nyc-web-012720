@@ -16,8 +16,6 @@ class User < ActiveRecord::Base
     end
 
     def add_song_to_playlist#(p_id)
-        # song_id = @@prompt.ask("Pick a song by the number that you would like to add to your playlist:") do |q|
-        #     q.in "1-#{Song.all.count}"
         choices = Song.all.map{|song| "#{song.id}. #{song.name}"}
         user_song_picks = @@prompt.multi_select("Select songs", choices)
         songs_by_id = user_song_picks.map{|song|song.to_i}
@@ -29,7 +27,7 @@ class User < ActiveRecord::Base
 
     def view_playlists
         p_id = get_playlist_id("Which playlist do you want to view?")
-        playlist = self.playlists.find_by(id: p_id)
+        playlist = self.playlists.find_by(id: p_id) #user playlists
         playlist.songs.each {|song| puts "#{song.name}"}
         # self.playlists.each {|playlist| puts "#{playlist.name}"} 
     end
@@ -37,7 +35,7 @@ class User < ActiveRecord::Base
     def delete_song_from_playlist
     
         p_id = get_playlist_id("What playlist do you want to delete from?") #this method receives user input of what playlist they want to edit and stores it into a variable in this method
-        playlist = self.playlists.find_by(id: p_id)
+        playlist = self.playlists.find_by(id: p_id) #user playlists
         songs_in_playlist = playlist.songs
         
         s_id = get_song_id("Which song do you want to remove?", songs_in_playlist)
@@ -54,8 +52,10 @@ class User < ActiveRecord::Base
 
     def delete_a_playlist
         p_id = get_playlist_id("What playlist do you want to delete?")
+        # Playlist.destroy_all(id: p_id)
+       
         playlist = self.playlists.find_by(id: p_id)
-        playlist.destroy 
+        playlist.destroy
     end
 
     ### Helper Methods
