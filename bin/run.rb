@@ -1,3 +1,5 @@
 require_relative '../config/environment'
 
-puts "hello world"
+new1 = CommandLineInterface.new()
+
+new1.welcome

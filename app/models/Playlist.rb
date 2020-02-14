@@ -1,8 +1,8 @@
 class Playlist < ActiveRecord::Base
-    has_many :Songplaylists
-    has_many :songs, through: :Songplaylists
+    belongs_to :users
+    has_many :song_playlists
+    has_many :songs, through: :song_playlists
 end
 
-def song_count
-end
+
 

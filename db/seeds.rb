@@ -1,9 +1,14 @@
+User.delete_all
+Playlist.delete_all
+
+
 user1 = User.create(name: "Jason")
 user2 = User.create(name: "David")
 
 december2019 = Playlist.create(name: "December 2019", user_id: user1.id)
 january2020 = Playlist.create(name: "January 2020", user_id: user1.id)
-february2020 = Playlist.create(name: "February 2020", user_id: user1.id)
+february2020 = Playlist.create(name: "February 2020", user_id: user2.id)
+
 
 song1 = Song.create(name: "youmakemefloetic", artist: "cay caleb", genre: "R&B", platform: "SoundCloud")
 song2 = Song.create(name: "Back To The Future", artist: "Magic Flowers", genre: "Hip-hop", platform: "SoundCloud")
